@@ -1,0 +1,32 @@
+# behat.yml
+default:
+  suites:
+    default:
+      paths:
+        features: features
+        bootstrap: 'features/bootstrap'
+      contexts:
+        #- FeatureContext
+        - Behat\MinkExtension\Context\MinkContext
+  extensions:
+    Behat\MinkExtension:
+      #default_session: goutte
+      # base_url: url
+      browser_name: chrome
+      goutte: ~
+      javascript_session: selenium2
+      selenium2:
+        browser: chrome
+        wd_host: http://127.0.0.1:4444/wd/hub
+#        capabilities:
+#          extra_capabilities:
+#            chrome:
+#              switches:
+#                - "--start-maximized"
+#                - "--start-fullscreen"
+#                - "--window-size=1000,600"
+      default_session: selenium2
+      #base_url: http://demowebshop.tricentis.com/
+      #base_url: http://automationpractice.com/index.php
+      #base_url: http://autopract.com/#/home/fashion
+      base_url: https://testingxperts.thirteen.demo.kineoplatforms.net/login/index.php
