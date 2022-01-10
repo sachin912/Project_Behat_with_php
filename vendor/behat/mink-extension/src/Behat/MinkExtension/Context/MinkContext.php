@@ -10,6 +10,7 @@
 
 namespace Behat\MinkExtension\Context;
 
+use Behat\Behat\Hook\Scope\AfterStepScope;
 use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\TranslatableContext;
 use Behat\Gherkin\Node\TableNode;
@@ -635,10 +636,21 @@ class MinkContext extends RawMinkContext implements TranslatableContext
     /**
      * @AfterStep
      */
-    public static function afterStep()
-    {
-        echo "After Step Executed";
-    }
+
+//    public function takeScreenShotAfterFailedStep(AfterStepScope $scope)
+//    {
+//        if (99 === $scope->getTestResult()->getResultCode()) {
+////        if($scope->getTestResult()->isPassed()){
+//            $driver = $this->getSession()->getDriver();
+//            if (!($driver instanceof Selenium2Driver)) {
+//                echo "Please check driver is correct";
+//                return;
+//            }
+//            file_put_contents('C:\Users\sachin.sherawat\Downloads\test.png', $this->getSession()->getDriver()->getScreenshot());
+//        }
+//
+//        echo " After Step Executed";
+//    }
 
     /**
      * @AfterScenario

@@ -1,32 +1,47 @@
-# behat.yml
+#behat.yml
+
 default:
   suites:
-    default:
-      paths:
-        features: features
-        bootstrap: 'features/bootstrap'
+    paths:
+      features: features
+      bootstrap: features/bootstrap
       contexts:
-        #- FeatureContext
         - Behat\MinkExtension\Context\MinkContext
+        - emuse\BehatHTMLFormatter\Context\ScreenshotContext:
+            screenshotDir: build/html/behat/assets/screenshots
+
+  formatters:
+    html:
+      Twig:
+      output_path: '%paths.base%/build/html/behat'
+
+
+
+
   extensions:
+    emuse\BehatHTMLFormatter\BehatHTMLFormatterExtension:
+      name: html
+      renderer: Twig,Behat2
+      file_name: index
+      print_args: true
+      print_outp: true
+      loop_break: true
+
+
+
     Behat\MinkExtension:
-      #default_session: goutte
-      # base_url: url
-      browser_name: chrome
       goutte: ~
-      javascript_session: selenium2
       selenium2:
         browser: chrome
         wd_host: http://127.0.0.1:4444/wd/hub
-#        capabilities:
-#          extra_capabilities:
-#            chrome:
-#              switches:
-#                - "--start-maximized"
-#                - "--start-fullscreen"
-#                - "--window-size=1000,600"
-      default_session: selenium2
-      #base_url: http://demowebshop.tricentis.com/
-      #base_url: http://automationpractice.com/index.php
-      #base_url: http://autopract.com/#/home/fashion
+        capabilities:
+          chrome:
+            switches:
+              - "--start-maximized"
+      #              "--start-fullscreen"
+      #              - "--window-size=1200,600"
+
       base_url: https://testingxperts.thirteen.demo.kineoplatforms.net/login/index.php
+      browser_name: chrome
+      default_session: selenium2
+

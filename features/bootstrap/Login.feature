@@ -14,8 +14,8 @@ Feature: Login
     Then the "Email" field should contain "tarun77@gmail.com"
     Then the "Password" field should not contain "tarun@123"
 
-  @sanity
-  Scenario: Verify Forget Password
-    When I follow "Log in"
-    Then I follow "Forgot password?"
+#  @sanity
+#  Scenario: Verify Forget Password
+#    When I follow "Log in"
+#    Then I follow "Forgot password?"
 
